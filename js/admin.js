@@ -47,6 +47,23 @@ async function getGlobalStats() {
     return { chefsCount, recipesCount, totalEarnings };
 }
 
+async function verifyAdmin() {
+  const user = auth.currentUser;
+  if (!user) {
+    window.location.href = 'login.html';
+    return false;
+  }
+  
+  // التحقق من وجود المستخدم في مجموعة admins
+  const adminDoc = await db.collection('admins').doc(user.uid).get();
+  if (!adminDoc.exists) {
+    alert('ليس لديك صلاحيات المدير!');
+    window.location.href = 'index.html';
+    return false;
+  }
+  return true;
+}
+
 // ============= عرض البيانات في الواجهة =============
 function renderChefsTable(chefs) {
     const table = document.getElementById('chefs-table');
