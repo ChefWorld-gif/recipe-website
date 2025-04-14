@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - موقع وصفات الطهي</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>تسجيل الدخول</h2>
+        
+        <div class="user-type-selector">
+            <button class="user-type-btn active" data-type="user">مستخدم</button>
+            <button class="user-type-btn" data-type="chef">شيف</button>
+        </div>
+        
+        <div class="login-form">
+            <input type="email" placeholder="البريد الإلكتروني" class="login-input">
+            <input type="password" placeholder="كلمة المرور" class="login-input">
+            
+            <div id="chef-fields" style="display: none;">
+                <input type="text" placeholder="اسمك" class="login-input">
+                <select class="login-input">
+                    <option value="">اختر المطبخ المفضل (اختياري)</option>
+                    <option value="arabic">عربي</option>
+                    <option value="international">دولي</option>
+                </select>
+                <p class="earn-message">سجل معنا واربح من وصفاتك!</p>
+            </div>
+            
+            <button class="submit-btn">تسجيل الدخول</button>
+            <p class="register-link">ليس لديك حساب؟ <a href="#">سجل هنا</a></p>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>
