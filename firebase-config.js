@@ -19,3 +19,33 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+// تصدير الخدمات
+const db = firebase.firestore();
+const auth = firebase.auth();
+
+// دالة مساعدة لإضافة وثيقة
+async function addRecipe(recipeData) {
+  try {
+    // إضافة معرّف الشيف تلقائياً
+    const recipeWithChef = {
+      ...recipeData,
+      chefId: auth.currentUser.uid,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      views: 0
+    };
+    
+    const docRef = await db.collection("recipes").add(recipeWithChef);
+    console.log("تمت إضافة الوصفة بمعرّف:", docRef.id);
+    return docRef.id;
+  } catch (error) {
+    console.error("Error adding recipe: ", error);
+    throw error;
+  }
+}
+
+// مثال للاستخدام:
+// addRecipe({
+//   name: "كبسة لحم",
+//   ingredients: ["لحم", "أرز", "بهارات"],
+//   instructions: "..." 
+// });
