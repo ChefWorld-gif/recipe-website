@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - الشيف</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- مكتبة Chart.js للرسوم البيانية -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="chef-dashboard">
+        <!-- شريط جانبي -->
+        <aside class="sidebar">
+            <div class="profile-section">
+                <img src="images/chef-avatar.jpg" alt="صورة الشيف" class="profile-img">
+                <h3>مرحباً، الشيف أحمد</h3>
+            </div>
+            
+            <nav class="dashboard-nav">
+                <ul>
+                    <li class="active"><a href="#">الصفحة الرئيسية</a></li>
+                    <li><a href="#">وصفاتي</a></li>
+                    <li><a href="#">الإحصائيات</a></li>
+                    <li><a href="#">إعدادات الحساب</a></li>
+                    <li><a href="#" id="logout-btn">تسجيل الخروج</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- المحتوى الرئيسي -->
+        <main class="dashboard-content">
+            <section class="add-recipe-section">
+                <h2>نشر وصفة جديدة</h2>
+                <form id="add-recipe-form">
+                    <div class="form-group">
+                        <label for="recipe-name">اسم الوصفة</label>
+                        <input type="text" id="recipe-name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="recipe-ingredients">المكونات (افصل بينها بفاصلة)</label>
+                        <textarea id="recipe-ingredients" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="recipe-instructions">طريقة التحضير</label>
+                        <textarea id="recipe-instructions" required></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="recipe-category">الصنف</label>
+                            <select id="recipe-category" required>
+                                <option value="food">طعام</option>
+                                <option value="dessert">حلى</option>
+                                <option value="drink">شراب</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="recipe-cuisine">المطبخ</label>
+                            <select id="recipe-cuisine" required>
+                                <option value="arabic">عربي</option>
+                                <option value="international">دولي</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="recipe-image">رابط الصورة</label>
+                        <input type="text" id="recipe-image" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="recipe-video">رابط الفيديو (اختياري)</label>
+                        <input type="text" id="recipe-video">
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">نشر الوصفة</button>
+                </form>
+            </section>
+            
+            <section class="stats-section">
+                <h2>إحصائيات الأداء</h2>
+                <div class="chart-container">
+                    <canvas id="performance-chart"></canvas>
+                </div>
+                
+                <div class="earnings-info">
+                    <h3>أرباحك</h3>
+                    <p>إجمالي الأرباح: <span id="total-earnings">150</span> ريال</p>
+                    <p>المشاهدات هذا الشهر: <span id="month-views">1,240</span></p>
+                    
+                    <div class="payment-setup">
+                        <h3>ربط حساب الدفع</h3>
+                        <select id="payment-method">
+                            <option value="paypal">PayPal</option>
+                            <option value="bank">حساب بنكي</option>
+                        </select>
+                        <input type="text" id="payment-details" placeholder="أدخل معلومات الدفع">
+                        <button id="save-payment-btn">حفظ</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/chef-dashboard.js"></script>
+</body>
+</html>
